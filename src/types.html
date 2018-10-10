@@ -1,0 +1,103 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        
+
+    <h1>Hello, JavaScrit!</h1>
+
+    <script>
+       // strings
+        var srt1 = 'this is my string',
+        srt2 = 'my second string',
+        srt3 = "my name is chris";
+
+        // numbers
+        let num1 = 10,
+            num2 = 500,
+            num3 = 3.14;
+
+        // booleans (truthy / falsy)
+        let b1 = true;
+            b2 = false;
+
+        var found = true;
+        var lost = false;
+        var message = "Hello world !" ;
+        var messageAsBoolean = Boolean(message);
+
+            
+        console.log(typeof(message));
+
+        console.log(typeof(b1));
+        console.log(typeof(num3));
+        
+        // specials
+        let sp1 = undefined,
+            sp2 = null,
+            sp3 = NaN;
+
+        var messageUndifined = undefined;
+        console.log(messageUndifined == undefined);
+
+        console.log(typeof(null));
+
+        var car=пull; // пull
+        alert(typeof car); // "object "
+        if (car != null) {// какие - то действия с car}
+        alert ( null == undefined ) ; // true
+
+        // ======================
+        // declaring variables
+
+        let myVariable;
+
+        myVariable = 'something';
+        console.log(myVariable);
+
+        var thing = 'first';
+        let newThing     = 'third';
+
+        // objects
+        const user = {
+        name: 'Chris',
+        username: 'chrisoncode' 
+        };
+        
+        console.log(typeof(user));
+
+        // arrays 
+        const users = ['chris', 'nick', 'holly'];
+        const luckyNumbers = [1, 43, 54, 132];
+        const whatever = ['chris', 1, 'holly'];
+
+        console.log(typeof(users));
+
+
+        const superUsers = [
+        { name: 'chris' },
+        { name: 'nick' },
+        { name: 'holly' }
+        ];
+
+        console.log(superUsers[2].name);
+
+        const otherThing = {
+        name: 'chris'  
+        };
+        console.log(otherThing.name);
+
+        otherThing.name = 'holly';
+
+        console.log(otherThing.name);
+
+        console.log(typeof(function(){}));
+
+    </script>
+    
+</body>
+</html>

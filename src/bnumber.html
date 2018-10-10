@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        
+
+    <h1>Побитовые операторы</h1>
+
+  <script>
+    
+    // declaring variables
+    
+    var xb = 01010101,
+        yb = 10101010;
+
+    console.group('Побитовые операторы');
+        console.log("Присваивание с побитовым AND x&=y x=x&y",xb&=yb);
+        console.log("Присваивание с побитовым XOR x^=y x=x^y",xb^=yb);
+        console.log("Присваивание с побитовым OR x|=y x=x|y",xb|yb);
+    console.groupEnd();
+    
+    console.group('Побитовые сдвиги');
+        console.log("Присваивание с левым сдвигом x<<=y xb = xb<<y", xb<<=yb);
+        console.log("Присваивание с правым сдвигом xb>>=y xb = xb >> y", xb>>=yb);
+        console.log("Присваивание с беззнаковым сдвигом вправо xb>>>=y xb=xb>>> y", xb>>>=yb);
+    console.groupEnd();
+
+  </script>
+    
+</body>
+</html>
