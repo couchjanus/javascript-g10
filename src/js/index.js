@@ -30,14 +30,14 @@ function ready() {
     //         document.querySelector('.flexmenu').classList.toggle('active');
     //     });
     
-    // var megamenuToggle = document.querySelector('.submenu');
+    var megamenuToggle = document.querySelector('.submenu');
       
-    // megamenuToggle.addEventListener('click', function(e){
-    //         e.preventDefault();
-    
-    //         document.querySelector('.megamenu').classList.toggle('active-mega');
+    megamenuToggle.addEventListener('click', function(e){
+            e.preventDefault();
             
-    //     });
+            document.querySelector('.megamenu').classList.toggle('active-mega');
+            
+        });
 
     
 }
