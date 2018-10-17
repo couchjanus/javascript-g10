@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Getting Started with JQuery</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    body { padding: 30px; }
+
+    .nav li{
+        display: inline-block;
+    }
+    .nav li a {
+        text-decoration: none;
+        color: rgb(7, 0, 0);
+        background:rgb(200, 200, 100);
+        padding: 0.5em;
+    }
+
+    span {
+      display: none;
+    }
+
+  </style>
+</head>
+
+<body>
+<ul class="nav">
+  <li><a href="06.html">Home</a></li>
+  <li><a href="05.html">About</a></li>
+</ul>
+  <h1>Hello JQuery</h1>
+
+  <p></p>
+  <span>Например, установим всем элементам span, у которых цвет шрифта не равен green, CSS свойство color, равное red.</span>
+
+<script src="js/jquery.min.js"></script>
+<script>
+
+  $(function() {
+      //DOM-дерево готово
+      $("p").text(
+       "Структура документа загружена и полностью сформирована!");
+      $('p').css('border', '3px solid blue');
+      // получим значение цвета background у элемента a
+      var background = $('.nav li a').css('background-color');
+      // выведем его в консоль
+      console.log(background);
+      
+      // Например, определим ширину и высоту элемента p:
+      // получим значения сразу нескольких CSS свойств
+      var cssProperties = $('p').css(['width','height']);
+      console.log(cssProperties);
+      
+      // $("a").css("color", "red");
+      
+      // $('p').css({
+      //    'color':'green',
+      //    'font-size':'16px'
+      // });
+
+      // увеличить отступ сверху, слева и справа 
+      // для элементов p на 10px:
+      // $('p').css({
+      //   "padding-left": "+=10",
+      //   "padding-right":"+=10", 
+      //   "padding-top": "+=10"
+      // });
+
+
+      // $('span').css('color', function(index, value) {
+      //     if (value!='rgb(0, 255, 0)') {
+      //         return 'red';
+      //     }
+      // });
+      
+      // $('span').css('display', function(index, value) {
+      //     if (value!='block') {
+      //         return 'block';
+      //     }
+
+      // });
+
+      //добавить к первому элементу р класс lead с помощью метода jQuery addClass():
+      // $(document.getElementsByTagName("P")[0]).addClass("lead");
+
+  });
+
+</script>
+
+</body>
+</html>

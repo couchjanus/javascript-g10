@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Getting Started with JQuery</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    body { padding: 30px; }
+
+    .nav li{
+        display: inline-block;
+    }
+    .nav li a {
+        text-decoration: none;
+        color: white;
+        background:red;
+        padding: 1em;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <h1>Hello JQuery</h1>
+
+  <p></p>
+
+  <a href="01.html">Go Back</a>
+
+<script src="js/jquery.min.js"></script>
+<script>
+   function ready() {
+
+    $("p").text(
+      "Структура документа загружена и полностью сформирована!");
+    }
+     
+    // $(document).ready(ready);
+    // $().ready(ready);
+
+    // jQuery(function($) {
+    //   //DOM-дерево готово
+    //   $("p").text("Структура документа загружена и полностью сформирована!");
+    // });
+    
+    $(window).on('load', function(){
+      // манипуляции с готовой страницей
+      $("p").text("Страница загружена и полностью сформирована!");
+    });
+
+    $(window).on('beforeunload', function(){
+      return "Are you sure ?";
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Getting Started with JQuery</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    body { padding: 30px; }
+
+    .nav li{
+        display: inline-block;
+    }
+    .nav li a {
+        text-decoration: none;
+        color: white;
+        background:red;
+        padding: 1em;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <h1>Hello JQuery</h1>
+
+
+<script src="js/jquery.min.js"></script>
+<script>
+
+  $(document).ready(
+    function(){
+      console.log('Hello jQuery code...');
+      // Функция .text() возвращает текст содержащийся в выбранном элементе. 
+      console.log($('h1').text());
+    }
+  );
+</script>
+
+</body>
+</html>

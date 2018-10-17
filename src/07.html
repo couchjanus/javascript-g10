@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Getting Started with JQuery</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    body { padding: 30px; }
+
+    .nav li{
+        display: inline-block;
+    }
+    .nav li a {
+        text-decoration: none;
+        color: rgb(7, 0, 0);
+        background:rgb(200, 200, 100);
+        padding: 0.5em;
+    }
+
+    span {
+      display: none;
+    }
+
+  </style>
+</head>
+
+<body>
+<ul class="nav">
+  <li><a href="06.html">Home</a></li>
+  <li><a href="05.html">About</a></li>
+</ul>
+  <h1>набор DOM-элементов Р</h1>
+
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+
+  <div></div>
+
+<script src="js/jquery.min.js"></script>
+<script>
+  //DOM-дерево готово
+  $(function() {
+      // массив, содержащий набор DOM-элементов Р
+      var myArrayP = document.getElementsByTagName("P") ; 
+
+      $("div").text(
+        $("p").text()
+        +' Counts p : '
+        + $(myArrayP).length
+      );
+      $("div").css({
+        "color":"red",
+        "font-size": "3em"
+      });
+  });
+
+</script>
+
+</body>
+</html>
