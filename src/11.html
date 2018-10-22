@@ -209,6 +209,35 @@
               <a class="item-remove" href="#0"></a>
           </li>
         </template>
+
+        <template id="productDetail">
+  
+            <figure class="item">
+                <h4 class="product-name">Cool Cat</h4>
+                <div class="image">
+                    <img class="slide" src=""/>
+                    <img class="slide" src="images/cat2.jpg" style="display:none;" />
+                    <img class="slide" src="images/cat3.jpg" style="display:none;" />
+                    <img class="slide" src="images/cat4.jpg" style="display:none;" />
+                </div>
+                
+                <div class="rating">
+                    <button class="prev">&#10094;&#10094;</button>
+                    <button class="next">&#10095;&#10095;</button>
+                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                </div>
+                <figcaption productId="">
+                    <p class="product-description">
+                        I'm just very selective about the reality I choose to accept.
+                    </p>
+                    <div class="price">
+                        <s class="old-price">$24.00</s><b class="product-price">$19.00</b>
+                    </div>
+                </figcaption>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </figure>
+        </template>
+          
                
     <script src="js/jquery.min.js"></script>             
     <!-- <script src="/js/main.js"></script> -->
@@ -266,7 +295,9 @@
                 $(e.target).parents('.product-menu').css('top', '80%');
             });
         });
-       
+        
+        const $template = $($('#cartItem').html());
+        
         $(".add-to-cart").each(function(index, element){
             $(element).on('click', function (e) {
                 var y = 180;    
@@ -274,26 +305,80 @@
                 .css('transform', 'rotateY(' + y + 'deg)');
                 $(e.target).parents('.grid-item').find('.product-back').addClass('back-is-visible');
 
-                var $template = $($('#cartItem').html());
+                let template = $template.clone();
                 
-                $template.find(".item-quantities").text($(this).parents(".product").find(".quantity").val());
+                template.find(".item-quantities").text($(this).parents(".product").find(".quantity").val());
         
-                $template.find(".item-quantities").after(' '+$(this).parents(".product").children(".product-name").text()); 
+                template.find(".item-quantities").after(' '+$(this).parents(".product").children(".product-name").text()); 
         
-                $template.find('.item-prices').text($(this).parents(".product").find(".product-price").text());
-                $(".cart-items").append($template);
+                template.find('.item-prices').text($(this).parents(".product").find(".product-price").text());
+                $(".cart-items").append(template);
             });
         });
 
-       $(".plus").click(function() {
-       var val = parseInt($(this).prev().attr('value'));
-       $(this).prev().attr('value', val+1);
-       });
+        $(".plus").click(function() {
+            var val = parseInt($(this).prev().attr('value'));
+            $(this).prev().attr('value', val+1);
+        });
 
-      $(".minus").click(function() {
-       var val = parseInt($(this).next().attr('value'));
-       $(this).next().attr('value', val-1);
-       });
+        $(".minus").click(function() {
+            var val = parseInt($(this).next().attr('value'));
+            $(this).next().attr('value', val-1);
+        });
+
+        $(".product-detail").each(function(index, element){
+            $(element).on('click', function () {
+                
+                var $template = $($('#productDetail').html());
+                $template.find('.product-price').text($(this).parents(".product").find(".product-price").text());
+                $template.find('.product-name').text($(this).parents(".product").find(".product-name").text());
+
+                $template.find('img').eq(0).attr('src', 'images/cat3.jpg');
+                
+
+                $(".grid-layout").empty();
+
+                $(".grid-layout").append($template);
+
+                let slideIndex = 1;
+
+                const prev = $(".prev");
+                const next = $(".next");
+
+                function showSlide(n) {
+                    let i;
+                    let x = $(".slide");
+                    if (n > x.length) {
+                        slideIndex = 1
+                    }    
+                    if (n < 1) {
+                        slideIndex = x.length
+                    }
+                    for (i = 0; i < x.length; i++) {
+                        x[i].style.display = "none";  
+                    }
+
+                    x[slideIndex-1].style.display = "block";  
+                }
+
+                showSlide(slideIndex);
+
+                function nextPrev(n) {
+                    showSlide(slideIndex += n);
+                }
+
+                next.click(function () {
+                    nextPrev(1);
+                });
+
+                prev.click(function () {
+                    nextPrev(-1);
+                });
+
+            });
+        });
+
+
 
     });
 

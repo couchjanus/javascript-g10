@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Название документа</title>
+</head>
+<body>
+
+  <p>Нажмите одну из кнопок, чтобы добавить или удалить последний пункт списка.</p>
+
+  <button onclick="bar()">Добавить</button>
+  <button onclick="foo()">Удалить</button>
+
+  <ul id="list1"><li>Кофе</li><li>Чай</li></ul>
+
+  <div>
+    <span id="childSpan">foo bar</span>
+  </div>
+
+
+  <script>
+    var i = 1;
+
+    function foo() {
+      var elem = document.getElementById("list1").lastChild;
+      elem.parentNode.removeChild(elem);
+    }
+
+    function bar() {
+      var elem = document.createElement("li");
+      elem.innerHTML = "Water" + i;
+      document.getElementById("list1").appendChild(elem);
+      i++;
+    }
+    // Создаем новый пустой элемент
+    // without an ID, any attributes, or any content
+    var sp1 = document.createElement("span");
+
+    // Присваиваем ему id 'newSpan'
+    sp1.setAttribute("id", "newSpan");
+
+    // Создаем строку.
+    var sp1_content = document.createTextNode("new replacement span element.");
+
+    // Добавляем контент в созданный нами узел
+    sp1.appendChild(sp1_content);
+
+    // создаем ссылку на существующий элемент который будем заменять
+    var sp2 = document.getElementById("childSpan");
+    var parentDiv = sp2.parentNode;
+
+    // заменяем существующий элемент sp2 на созданный нами sp1
+    parentDiv.replaceChild(sp1, sp2);
+
+    // Результат:
+    // <div>
+    //   <span id="newSpan">new replacement span element.</span>
+    // </div>
+  </script>
+
+</body>
+</html>
