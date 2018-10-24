@@ -45,11 +45,7 @@
         <h2>Cart</h2>
         <!-- cart-items start-->
         <ul class="cart-items">
-            <li>
-                <span class="item-quantity">1x</span> <span class="item-name">Product Name</span>
-                <div class="item-price">$9.99</div>
-                <a href="#0" class="item-remove"></a>
-            </li>
+            
         </ul> 
         <!-- cart-items end -->
     
@@ -97,21 +93,20 @@
         </footer>
     </div>
 
-    
-    <template id="cartItem">      
+    <template id="cartItem">
         <li>
           <span class="productInCart"></span>
             <span class="qty">
               <span class="item-quantities">
               </span>
-              <span class="item-name">
-              </span>
             </span>
-            <div class="item-prices">
-            </div>
-            <a class="item-remove" href="#0"></a>
+            <span class="item-name">
+            </span>
+            <span class="item-prices">
+            </span>
+            <a class="item-remove" href="#0"><i class="fas fa-times"></i></a>
         </li>
-    </template>
+      </template>
 
     <template id="productItem">
       <article class="grid-item">
@@ -198,72 +193,6 @@
 
     function ready() {
 
-      var myArray = new Array("1", "2", "3");
-      myArray = myArray.concat("a", "b", "c");
-      console.log(myArray);
-      // myArray = ["1", "2", "3", "a", "b", "c"]
-
-      var newArray = new Array("Wind", "Rain", "Fire");
-      var list = newArray.join(" - ");
-      console.log(list);
-      // list = "Wind - Rain - Fire"
-
-      var pushArray = new Array("1", "2");
-      pushArray.push("3"); 
-      console.log(pushArray);
-      // pushArray =["1", "2", "3"]
-
-      var popArray = new Array("1", "2", "3");
-      var last = popArray.pop();
-      console.log(popArray);
-      // popArray =["1", "2"], last = "3"
-
-      var shitArray = new Array ("1", "2", "3");
-      var first = shitArray.shift();
-      console.log(shitArray);
-      // shitArray = ["2", "3"], first = "1"
-
-      var unshitArray = new Array ("1", "2", "3");
-      unshitArray.unshift("4", "5");
-      console.log(unshitArray);
-      // unshitArray becomes ["4", "5", "1", "2", "3"]
-
-      var sliceArray = new Array ("a", "b", "c", "d", "e");
-      sliceArray = sliceArray.slice(1, 4); 
-      // начиная с индекса 1 извлекаются элементы 
-      // вплоть до индекса 3
-      console.log(sliceArray);
-      // sliceArray = [ "b", "c", "d"]
-
-
-      var spliceArray = new Array ("1", "2", "3", "4", "5");
-      spliceArray.splice(1, 3, "a", "b", "c", "d");
-      // spliceArray = ["1", "a", "b", "c", "d", "5"]
-      // Этот код, начиная с ячейки под индексом 1 (в которой находилось значение "2"),
-      // удаляет 3 элемента, и вставляет на их место
-      // элеметны, переданные в качестве последующих параметров.
-      
-      var reverseArray = new Array ("1", "2", "3");
-      reverseArray.reverse();
-      // элементы переставлены reverseArray = [ "3", "2", "1" ]
-
-      var sortArray = new Array("Wind", "Rain", "Fire");
-      sortArray.sort();
-      // массив отсортирован sortArray = [ "Fire", "Rain", "Wind" ]
-      
-      var a = ['a', 'b', 'a', 'b', 'a'];
-      console.log(a.indexOf('b')); // выводит 1
-      // Попробуем еще раз, начиная с индекса последнего совпадения
-      console.log(a.indexOf('b', 2)); // выводит 3
-      console.log(a.indexOf('z')); // выводит -1, потому что 'z' не найдено
-      
-      var al = ['a', 'b', 'c', 'd', 'a', 'b'];
-      console.log(al.lastIndexOf('b')); // выводит 5
-      // Попробуем еще раз, начиная с индекса, предшествующего индексу последнего совпадения
-      console.log(al.lastIndexOf('b', 4)); // выводит 1
-      console.log(al.lastIndexOf('z')); // выводит -1
-
-            
         document.getElementById("cart-trigger").addEventListener('click', function () {
                 toggle_panel(document.getElementById("cart-sidebar"), document.getElementById("shadow-layer"));
         });
@@ -291,28 +220,26 @@
                 mega.classList.remove('mega-active');
         });
        
-        
+       
         const $productTemplate = document.getElementById("productItem").content;
 
         for (var i=0; i<Object.keys(data).length; i++){
             document.querySelector('.grid-layout').append(makeProductItem($productTemplate, data[i]).cloneNode(true));
         }
-            var buy = document.getElementsByClassName('buy-now');
-            
-            for (let i=0; i<buy.length; i++ ){
-                
-                buy[i].addEventListener('click', function (e) {
-                    e.target.parentNode.parentNode.querySelector('.product .product-name').style.display = 'none';
-                    e.target.parentNode.parentNode.querySelector('.product .icon').style.display = 'none';
-                    e.target.parentNode.parentNode.querySelector('.product .buy-now').style.display = 'none';
-                    e.target.parentNode.parentNode.querySelector('.product .product-detail').style.display = 'block';
-                    e.target.parentNode.parentNode.querySelector('.product-menu').style.top = '40%';
-                });
- 
-           }
-           
 
-            var cancel = document.getElementsByClassName('cancel');
+        var buy = document.getElementsByClassName('buy-now');
+        Array.prototype.forEach.call(buy, function(el) {
+              el.addEventListener('click', function(){
+                let $this = this.parentNode.parentNode;
+                $this.querySelector('.product .product-name').style.display = 'none';
+                $this.querySelector('.product .icon').style.display = 'none';
+                $this.querySelector('.product .buy-now').style.display = 'none';
+                $this.querySelector('.product .product-detail').style.display = 'block';
+                $this.querySelector('.product-menu').style.top = '40%';
+              });
+        });
+
+        var cancel = document.getElementsByClassName('cancel');
             
             for (let i=0; i<buy.length; i++ ){
 
@@ -327,9 +254,9 @@
             
             var addcart = document.getElementsByClassName('add-to-cart');
             
-            const content = document.getElementById("cartItem").content;    
+            // const content = document.getElementById("cartItem").content;    
             for (let i=0; i<addcart.length; i++ ){
-                
+                let content = document.getElementById("cartItem").content;    
                 addcart[i].addEventListener('click', function (e) {
                 var y = 180;
                 e.target.parentNode.parentNode.parentNode.parentNode.querySelector('.product-wrapper').style.transform = 'rotateY(' + y + 'deg)';
@@ -341,8 +268,13 @@
 
                 content.querySelector('.item-prices').textContent = this.parentNode.querySelectorAll(":scope > .product-price")[0].textContent;
 
-                document.querySelector('.cart-items').append(content.cloneNode(true));
-              
+                content.querySelector(".item-remove").addEventListener('click', function() {
+                    this.parentNode.remove();
+                });
+
+                // document.querySelector('.cart-items').append(content.cloneNode(true));
+                document.querySelector('.cart-items').append(content);
+          
             });          
         }
 
